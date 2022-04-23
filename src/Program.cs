@@ -26,14 +26,14 @@ namespace SteamLauncher
             System.Console.WriteLine($"Starting url: {epicUrl}");
             Process.Start(ps);
 
-            Thread.Sleep(5000);
-
             var gameProcesses = Process.GetProcessesByName(exeName);
 
-            if (gameProcesses.Length != 1)
+            System.Console.WriteLine($"Checking if game process: {exeName} has started");
+            while (gameProcesses.Length != 1)
             {
-                System.Console.WriteLine($"Could not find a single process with name: {exeName}");
-                return;
+                System.Console.WriteLine($"Game process nor found, checking again in 1 second");
+                Thread.Sleep(10000);
+                gameProcesses = Process.GetProcessesByName(exeName);
             }
             
             System.Console.WriteLine($"Game started.");
