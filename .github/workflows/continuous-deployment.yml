@@ -38,8 +38,8 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '5.0.x'
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.1
+      - uses: microsoft/setup-msbuild@v1.1
+      - uses: ilammy/msvc-dev-cmd@v1.10.0
       - name: Build .NET code
         run: .\build.ps1
         shell: powershell
