@@ -8,4 +8,4 @@ Remove-Item -Force -Recurse -Path .\out -ErrorAction Ignore
 dotnet publish -r win10-x64 -p:PublishTrimmed=true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:DebugType=None -p OutputType:WinExe --self-contained true -c Release -o out
 
 # Set Exe as a GUI application
-editbin.exe /subsystem:windows out\SteamLinkEpicLauncher.exe
+editbin /subsystem:windows out\SteamLinkEpicLauncher.exe
