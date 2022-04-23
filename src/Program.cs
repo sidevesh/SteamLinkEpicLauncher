@@ -29,15 +29,16 @@ namespace SteamLauncher
             var gameProcesses = Process.GetProcessesByName(exeName);
 
             System.Console.WriteLine($"Checking if game process: {exeName} has started");
-            while (gameProcesses.Length != 1)
+            while (gameProcesses.Length == 0)
             {
-                System.Console.WriteLine($"Game process nor found, checking again in 1 second");
-                Thread.Sleep(10000);
+                System.Console.WriteLine($"Game process not found, checking again in 1 second");
+                Thread.Sleep(1000);
                 gameProcesses = Process.GetProcessesByName(exeName);
             }
             
-            System.Console.WriteLine($"Game started.");
+            System.Console.WriteLine($"Game started");
             gameProcesses[0].WaitForExit();
+            System.Console.WriteLine($"Game closed, Exiting.");
 
         }
     }
