@@ -1,13 +1,21 @@
 ﻿using System;
-using System.Threading;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace SteamLauncher
 {
     class Program
     {
+        [DllImport("user32.dll")]
+        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
         static void Main(string[] args)
         {
+
+            IntPtr h = Process.GetCurrentProcess().MainWindowHandle;
+            ShowWindow(h, 0);
+
             if (args.Length != 2)
             {
                 System.Console.WriteLine("ERROR: Needs launch URL and EXE Name");
