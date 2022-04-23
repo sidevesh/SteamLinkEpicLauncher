@@ -31,7 +31,7 @@ namespace SteamLauncher
                 Verb = "open"
             };
 
-            System.Console.WriteLine($"Starting url: {epicUrl}");
+            // System.Console.WriteLine($"Starting url: {epicUrl}");
             Process.Start(ps);
 
             Thread.Sleep(5000);
