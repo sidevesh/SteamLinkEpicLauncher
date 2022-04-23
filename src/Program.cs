@@ -1,24 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
 using System.Threading;
 
 namespace SteamLauncher
 {
     class Program
     {
-        [DllImport("user32.dll")]
-        private static extern int ShowWindow(int Handle, int showState);
-
-        [DllImport("kernel32.dll")]
-        public static extern int GetConsoleWindow();
-
         static void Main(string[] args)
         {
-
-            int win = GetConsoleWindow();
-            ShowWindow(win, 0);
-
             if (args.Length != 2)
             {
                 System.Console.WriteLine("ERROR: Needs launch URL and EXE Name");
@@ -34,7 +23,7 @@ namespace SteamLauncher
                 Verb = "open"
             };
 
-            // System.Console.WriteLine($"Starting url: {epicUrl}");
+            System.Console.WriteLine($"Starting url: {epicUrl}");
             Process.Start(ps);
 
             Thread.Sleep(5000);
