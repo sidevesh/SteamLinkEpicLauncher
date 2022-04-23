@@ -8,13 +8,16 @@ namespace SteamLauncher
     class Program
     {
         [DllImport("user32.dll")]
-        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+        private static extern int ShowWindow(int Handle, int showState);
+
+        [DllImport("kernel32.dll")]
+        public static extern int GetConsoleWindow();
 
         static void Main(string[] args)
         {
 
-            IntPtr h = Process.GetCurrentProcess().MainWindowHandle;
-            ShowWindow(h, 0);
+            int win = GetConsoleWindow();
+            ShowWindow(win, 0);
 
             if (args.Length != 2)
             {
